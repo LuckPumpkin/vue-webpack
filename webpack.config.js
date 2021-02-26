@@ -68,8 +68,9 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 512000,
-              name: '[name]-[hash:8].[ext]'
+              limit: 4048,
+              name: '[name]-[hash:8].[ext]',
+              outputPath: 'images/'
             }
           }
         ]
@@ -81,8 +82,8 @@ module.exports = {
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      // template: path.resolve(__dirname, '../index.html')
-      // template: 'index.html'
+      // template: path.resolve(__dirname, 'index.html')
+      template: './index.html'
     })
   ],
   devServer: {
