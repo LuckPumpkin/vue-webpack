@@ -9,7 +9,7 @@
 <template>
   <div id='app'>
     {{msg}}
-    <img src="./assets/logo.jpg" alt="">
+    <img width='300px' height='300Ppx' src="../static/img/logo.jpg" alt="">
   </div>
 </template>
 
@@ -24,8 +24,8 @@ export default {
 }
 </script>
 
-<style scoped style='less'>
+<style scoped type='less'>
 #app{
-  color: red
+  color: red;
 }
 </style>

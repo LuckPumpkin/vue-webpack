@@ -17,8 +17,8 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'scripts/bundle[hash:8].js',
-    publicPath:'./'
+    filename: 'scripts/[name]-[hash:8].js',
+    // publicPath: '/'
   },
   // Node.js 中，__dirname 总是指向被执行 js 文件的绝对路径，所以当你在 /d1/d2/myscript.js 文件中写了 __dirname， 它的值就是 /d1/d2 。
   // resolve / join
@@ -64,16 +64,17 @@ module.exports = {
       },
       {
         test: /\.(jpg|jpeg|gif|png|svg)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 4048,
-              name: '[name]-[hash:8].[ext]',
-              outputPath: 'images/'
-            }
-          }
-        ]
+        type: 'asset/inline',
+        // use: [
+        //   {
+        //     loader: 'url-loader',
+        //     options: {
+        //       limit: 1024,
+        //       name: '[name].[ext]',
+        //       outputPath: 'static/img/'
+        //     }
+        //   }
+        // ]
       }
     ],
     
@@ -82,8 +83,8 @@ module.exports = {
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      // template: path.resolve(__dirname, 'index.html')
-      template: './index.html'
+      template: path.resolve(__dirname, 'index.html')
+      // template: 'index.html'
     })
   ],
   devServer: {
