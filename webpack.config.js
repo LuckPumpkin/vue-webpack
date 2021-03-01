@@ -4,7 +4,7 @@
  * @Author: yanan.zhao
  * @Date: 2021-02-26 10:31:56
  * @LastEditors: yanan.zhao
- * @LastEditTime: 2021-02-26 19:39:26
+ * @LastEditTime: 2021-03-01 16:04:15
  */
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
@@ -31,6 +31,12 @@ module.exports = {
         use: [
           {
             loader: 'vue-loader'
+          },
+          {
+            loader: 'iview-loader',
+            options: {
+              prefix: false
+            }
           }
         ]
       }, 
@@ -75,6 +81,10 @@ module.exports = {
         //     }
         //   }
         // ]
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader'
       }
     ],
     
