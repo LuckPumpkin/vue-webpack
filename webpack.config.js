@@ -4,17 +4,19 @@
  * @Author: yanan.zhao
  * @Date: 2021-02-26 10:31:56
  * @LastEditors: yanan.zhao
- * @LastEditTime: 2021-03-01 16:04:15
+ * @LastEditTime: 2021-03-10 19:46:00
  */
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')  // 删除无用文件
 const HtmlWebpackPlugin = require('html-webpack-plugin') // 生成html入口文件
+const MiniCssExtractPlugin  = require('mini-css-extract-plugin')
 
 module.exports = {
   // mode: 'development',
   // entry:  path.resolve(__dirname, 'src/main.js'),
   entry: './src/main.js',
+  devtool: 'eval-source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'scripts/[name]-[hash:8].js',
@@ -95,6 +97,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'index.html')
       // template: 'index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name]-[hash:8].css'
     })
   ],
   devServer: {
